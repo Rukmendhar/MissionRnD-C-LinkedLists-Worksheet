@@ -19,5 +19,31 @@ struct node {
 };
 
 struct node * sortLinkedList(struct node *head) {
-	return NULL;
+	if (head == NULL)
+		return NULL;
+	else
+	{
+		struct node *nextnodeptr;
+		struct node *currentnodeptr = head;
+		int temp;
+
+		while (currentnodeptr->next != NULL)
+		{
+			nextnodeptr = currentnodeptr->next;
+
+			while (nextnodeptr != NULL)
+			{
+				if (currentnodeptr->num > nextnodeptr->num)
+				{
+					temp = currentnodeptr->num;
+					currentnodeptr->num = nextnodeptr->num;
+					nextnodeptr->num = temp;
+				}
+				nextnodeptr = nextnodeptr->next;
+			}
+			currentnodeptr = currentnodeptr->next;
+		}
+
+		return head;
+	}
 }
